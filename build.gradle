@@ -1,0 +1,19 @@
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.0'
+    compile 'org.jsoup:jsoup:1.8.1'
+    compile 'org.scala-stm:scala-stm_2.11:0.7'
+    compile 'com.typesafe.akka:akka-actor_2.11:2.3.7'
+}
+
+task runScala(dependsOn: 'classes', type: JavaExec) {
+  main = 'ParseCrawl'
+  classpath sourceSets.main.runtimeClasspath
+}
+
+defaultTasks 'clean', 'runScala'
